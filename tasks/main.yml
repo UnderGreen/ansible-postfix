@@ -1,0 +1,24 @@
+---
+# Defines tasks to install and configure Postfix
+
+- name: Include the OS specific varibles
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Install packages for Debian derivatives
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+  with_items: postfix_packages
+
+- name: ensure that service is enabled
+  service: name={{ postfix_service }} enabled=yes
+
+- name: Write Postfix configuration template
+  template:
+    src: etc/postfix/main.cf.j2
+    dest: "{{ postfix_config_dir }}/main.cf"
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - restart postfix
