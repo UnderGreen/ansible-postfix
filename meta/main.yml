@@ -1,0 +1,18 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: Sergei Antipov
+  description: Postfix for Ubuntu.
+  company: "2GIS"
+  license: "BSD"
+  min_ansible_version: 1.4
+  platforms:
+  - name: Ubuntu
+    versions:
+    - precise
+    - trusty
+  categories:
+    - networking
+    - system
+    - mail
