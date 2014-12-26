@@ -5,3 +5,6 @@
 postfix_domain: ''
 postfix_notify_email: false
 postfix_relayhost: ''
+
+# Install fresh packages or not? Variable must be 'present' or 'latest'
+packages_state: present

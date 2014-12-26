@@ -7,7 +7,7 @@
 - name: Install packages for Debian derivatives
   apt:
     pkg: "{{ item }}"
-    state: latest
+    state: "{{ packages_state }}"
   with_items: postfix_packages
 
 - name: ensure that service is enabled
