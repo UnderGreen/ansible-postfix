@@ -1,3 +1,4 @@
 {% if postfix_header_checks %}
-/^Received:.*\[127\.0\.0\.1\]/		IGNORE
+{{ postfix_header_regexp }}
+
 {% endif %}
