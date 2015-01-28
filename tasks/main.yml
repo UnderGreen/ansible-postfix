@@ -15,6 +15,18 @@
 - name: ensure that service is enabled
   service: name={{ postfix_service }} enabled=yes
 
+- name: Write Postfix header_checks template
+  template:
+    src: etc/postfix/header_checks.j2
+    dest: "{{ postfix_config_dir }}/header_checks"
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - restart postfix
+  when: postfix_header_checks
+
+
 - name: Write Postfix configuration template
   template:
     src: etc/postfix/main.cf.j2
