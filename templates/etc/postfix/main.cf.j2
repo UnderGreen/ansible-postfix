@@ -29,3 +29,7 @@ mailbox_size_limit = 0
 recipient_delimiter = +
 inet_interfaces = loopback-only
 relayhost = {% if postfix_relayhost is defined %}{{ postfix_relayhost }}{% else %}$mydomain{% endif %}
+
+{% if postfix_header_checks %}
+header_checks = regexp:/etc/postfix/header_checks
+{% endif %}
